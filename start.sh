@@ -12,6 +12,7 @@ fi
 # 更新系统包列表
 sudo apt update
 apt install screen -y
+sudo apt install docker.io docker-compose -y
 
 # 检查 Docker 是否已安装
 if ! command -v docker &> /dev/null
