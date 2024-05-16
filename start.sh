@@ -21,21 +21,26 @@ then
     echo "未检测到 Docker，正在安装..."
     sudo apt-get install ca-certificates curl gnupg lsb-release
 
-    # 添加 Docker 官方 GPG 密钥
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-    # 设置 Docker 仓库
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    # # 添加 Docker 官方 GPG 密钥
+    #  sudo mkdir -p /etc/apt/keyrings
+    #  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    
+    # # 设置 Docker 仓库
+    # echo \
+    #   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    #   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     # 授权 Docker 文件
-    sudo chmod a+r /etc/apt/keyrings/docker.gpg
-    sudo apt-get update
+    # sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    # sudo apt-get update
 
-    # 安装 Docker 最新版本
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+    # # 安装 Docker 最新版本
+    # sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+    sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce docker-ce-cli containerd.io
 else
     echo "Docker 已安装。"
 fi
