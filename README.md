@@ -7,11 +7,3 @@ wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/sta
 
 重启服务：
 wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/restart.sh && chmod +x restart.sh && ./restart.sh
-
-不下载代码直接运行：
-
-启动服务：
-curl -s  https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/start.sh |bash
-
-重启服务：
-curl -s  https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/restart.sh |bash
