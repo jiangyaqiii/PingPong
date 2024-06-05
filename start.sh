@@ -89,3 +89,6 @@ sudo systemctl status quili_monitor.service
 
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
 
+cd ~
+rm -f start.sh
+echo ''
