@@ -56,7 +56,6 @@ keyid=$device_id
 cd ~
 # 下载PINGPONG程序
 wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
-chmod +x ./PINGPONG
 # ===================================公共模块===监控screen模块======================================================================
 #监控screen脚本
 echo '#!/bin/bash
@@ -81,11 +80,11 @@ Type=simple
 ExecStart=/bin/bash /root/monit.sh
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/quili_monitor.service
+WantedBy=multi-user.target' > /etc/systemd/system/pingpong_monitor.service
 sudo systemctl daemon-reload
-sudo systemctl enable quili_monitor.service
-sudo systemctl start quili_monitor.service
-sudo systemctl status quili_monitor.service
+sudo systemctl enable pingpong_monitor.service
+sudo systemctl start pingpong_monitor.service
+sudo systemctl status pingpong_monitor.service
 
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
 
