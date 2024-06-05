@@ -57,35 +57,37 @@ cd ~
 # 下载PINGPONG程序
 wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
 # ===================================公共模块===监控screen模块======================================================================
-#监控screen脚本
-echo '#!/bin/bash
-while true
-do
-    if ! screen -list | grep -q "pingpong"; then
-        echo "Screen session not found, restarting..."
-        cd /root
-        screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
-    fi
-    sleep 10  # 每隔10秒检查一次
-done' > monit.sh
-##给予执行权限
-chmod +x monit.sh
+# #监控screen脚本
+# echo '#!/bin/bash
+# while true
+# do
+#     if ! screen -list | grep -q "pingpong"; then
+#         echo "Screen session not found, restarting..."
+#         cd /root
+#         screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
+#     fi
+#     sleep 10  # 每隔10秒检查一次
+# done' > monit.sh
+# ##给予执行权限
+# chmod +x monit.sh
+# # ================================================================================================================================
+# echo '[Unit]
+# Description=pingpong Monitor Service
+# After=network.target
+
+# [Service]
+# Type=simple
+# ExecStart=/bin/bash /root/monit.sh
+
+# [Install]
+# WantedBy=multi-user.target' > /etc/systemd/system/pingpong_monitor.service
+# sudo systemctl daemon-reload
+# sudo systemctl enable pingpong_monitor.service
+# sudo systemctl start pingpong_monitor.service
+# sudo systemctl status pingpong_monitor.service
 # ================================================================================================================================
-echo '[Unit]
-Description=pingpong Monitor Service
-After=network.target
 
-[Service]
-Type=simple
-ExecStart=/bin/bash /root/monit.sh
-
-[Install]
-WantedBy=multi-user.target' > /etc/systemd/system/pingpong_monitor.service
-sudo systemctl daemon-reload
-sudo systemctl enable pingpong_monitor.service
-sudo systemctl start pingpong_monitor.service
-sudo systemctl status pingpong_monitor.service
-
+screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
 
 cd ~
