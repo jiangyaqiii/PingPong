@@ -72,7 +72,7 @@ done' > monit.sh
 chmod +x monit.sh
 # ================================================================================================================================
 echo '[Unit]
-Description=Quili Monitor Service
+Description=pingpong Monitor Service
 After=network.target
 
 [Service]
