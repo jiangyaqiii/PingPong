@@ -46,50 +46,16 @@ else
 fi
 
 #获取运行文件
-#------------ 为防止重复启动，停止之前的会话------------
-screen -X -S pingpong quit
-#------------------------------------------------------
+keyid="$your_device_id"
 
-keyid=$device_id
-
-
-cd ~
 # 下载PINGPONG程序
 wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
-# ===================================公共模块===监控screen模块======================================================================
-# #监控screen脚本
-# echo '#!/bin/bash
-# while true
-# do
-#     if ! screen -list | grep -q "pingpong"; then
-#         echo "Screen session not found, restarting..."
-#         cd /root
-#         screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
-#     fi
-#     sleep 10  # 每隔10秒检查一次
-# done' > monit.sh
-# ##给予执行权限
-# chmod +x monit.sh
-# # ================================================================================================================================
-# echo '[Unit]
-# Description=pingpong Monitor Service
-# After=network.target
 
-# [Service]
-# Type=simple
-# ExecStart=/bin/bash /root/monit.sh
+if [ -f "./PINGPONG" ]; then
+    chmod +x ./PINGPONG
+    screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
+else
+    echo "下载PINGPONG失败，请检查网络连接或URL是否正确。"
+fi
 
-# [Install]
-# WantedBy=multi-user.target' > /etc/systemd/system/pingpong_monitor.service
-# sudo systemctl daemon-reload
-# sudo systemctl enable pingpong_monitor.service
-# sudo systemctl start pingpong_monitor.service
-# sudo systemctl status pingpong_monitor.service
-# ================================================================================================================================
-
-screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
-
-cd ~
-rm -f start.sh
-echo ''
