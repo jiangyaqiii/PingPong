@@ -45,13 +45,13 @@ else
     echo "Docker 已安装。"
 fi
 
+# 下载PINGPONG程序
+wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
+
 #获取运行文件
 keyid="$device_id"
 echo '设备号id:'
 echo $keyid
-
-# 下载PINGPONG程序
-wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
 
 if [ -f "./PINGPONG" ]; then
     chmod +x ./PINGPONG
