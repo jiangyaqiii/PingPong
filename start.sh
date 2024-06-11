@@ -57,6 +57,7 @@ if [ -f "./PINGPONG" ]; then
 else
     echo "下载PINGPONG失败，请检查网络连接或URL是否正确。"
 fi
-
+cd ~
+rm -f start.sh
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
 
