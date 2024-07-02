@@ -14,6 +14,15 @@ sudo apt update
 apt install screen -y
 sudo apt install docker.io docker-compose -y
 
+#####检查久的客户端是否存在，如果存在，则删除#####
+if [ -f "./PINGPONG" ]; then
+    rm -f PINGPONG
+    echo "已删除旧客户端"
+else
+    echo ""
+fi
+########################################
+
 # 检查 Docker 是否已安装
 if ! command -v docker &> /dev/null
 then
