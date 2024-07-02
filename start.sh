@@ -15,6 +15,7 @@ apt install screen -y
 sudo apt install docker.io docker-compose -y
 
 #####检查久的客户端是否存在，如果存在，则删除#####
+cd ~
 screen -X -S pingpong quit
 if [ -f "./PINGPONG" ]; then
     rm -f PINGPONG
