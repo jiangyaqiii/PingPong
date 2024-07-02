@@ -13,3 +13,9 @@ wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/star
 export device_id=xxxxx
 
 wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/restart.sh && chmod +x restart.sh && ./restart.sh 2>&1 | tee console.log
+
+更新服务：
+
+export device_id=xxxxx
+
+wget -O update.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/update.sh && chmod +x update.sh && ./update.sh 2>&1 | tee console.log
