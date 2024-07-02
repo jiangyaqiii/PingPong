@@ -70,3 +70,4 @@ else
 fi
 
 echo "节点已经启动，请使用screen -r pingpong 查看日志"
+rm -f update.sh
