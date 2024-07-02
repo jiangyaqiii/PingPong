@@ -10,7 +10,7 @@ fi
 # 节点安装功能
 
 # 更新系统包列表
-# sudo apt update
+sudo apt update
 apt install screen -y
 sudo apt install docker.io docker-compose -y
 
