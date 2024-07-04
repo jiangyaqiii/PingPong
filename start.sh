@@ -14,6 +14,17 @@ sudo apt update
 apt install screen -y
 sudo apt install docker.io docker-compose -y
 
+#####检查久的客户端是否存在，如果存在，则删除#####
+cd ~
+screen -X -S pingpong quit
+if [ -f "./PINGPONG" ]; then
+    rm -f PINGPONG
+    echo "已删除旧客户端"
+else
+    echo ""
+fi
+########################################
+
 # 检查 Docker 是否已安装
 if ! command -v docker &> /dev/null
 then
@@ -51,13 +62,13 @@ wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/la
 #获取运行文件
 read -p "请输入你的key device id: " your_device_id
 keyid="$your_device_id"
+
 if [ -f "./PINGPONG" ]; then
     chmod +x ./PINGPONG
     screen -dmS pingpong bash -c "./PINGPONG --key \"$keyid\""
 else
     echo "下载PINGPONG失败，请检查网络连接或URL是否正确。"
 fi
-cd ~
-rm -f start.sh
-echo "节点已经启动，请使用screen -r pingpong 查看日志"
 
+echo "节点已经启动，请使用screen -r pingpong 查看日志"
+rm -f start.sh
