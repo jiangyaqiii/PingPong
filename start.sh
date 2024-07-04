@@ -21,7 +21,7 @@ if [ -f "./PINGPONG" ]; then
     rm -f PINGPONG
     echo "已删除旧客户端"
 else
-    echo ""
+    echo "不存在客户端"
 fi
 ########################################
 
