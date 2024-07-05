@@ -7,3 +7,6 @@ wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/sta
 
 重启服务：
 wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/restart.sh && chmod +x restart.sh && ./restart.sh
+
+启动0g：
+wget -O start_0g.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/main/start_0g.sh && chmod +x start_0g.sh && ./start_0g.sh
