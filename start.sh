@@ -60,7 +60,7 @@ fi
 wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
 
 #获取运行文件
-read -p "请输入你的key device id: " your_device_id
+read -p "请输入你的设备密钥: " your_device_id
 keyid="$your_device_id"
 
 if [ -f "./PINGPONG" ]; then
