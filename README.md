@@ -18,3 +18,7 @@ wget -O restart.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/re
 export device_id=xxxxx
 
 wget -O update.sh https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/update.sh && chmod +x update.sh && ./update.sh
+
+查看状态：
+
+curl -s https://raw.githubusercontent.com/jiangyaqiii/PingPong/web/look_status.sh | bash
