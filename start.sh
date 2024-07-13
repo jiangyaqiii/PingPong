@@ -10,7 +10,7 @@ fi
 # 节点安装功能
 
 # 更新系统包列表
-sudo apt update
+sudo apt update -y
 apt install screen -y
 # sudo apt install docker.io docker-compose -y
 
@@ -30,7 +30,7 @@ if ! command -v docker &> /dev/null
 then
     # 如果 Docker 未安装，则进行安装
     echo "未检测到 Docker，正在安装..."
-    sudo apt-get install ca-certificates curl gnupg lsb-release
+    sudo apt-get install ca-certificates curl gnupg lsb-release -y
 
     # 添加 Docker 官方 GPG 密钥
     sudo mkdir -p /etc/apt/keyrings
@@ -43,7 +43,7 @@ then
 
     # 授权 Docker 文件
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
-    sudo apt-get update
+    sudo apt-get update -y
 
     # 安装 Docker 最新版本
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
